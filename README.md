@@ -1,6 +1,6 @@
 # Technická dokumentace a Implementační manuál: Periodic Table Game
 
-Tento dokument slouží jako kompletní průvodce implementací Android aplikace v Kotlinu (kontext rok 2025). Architektura sleduje vzor **MVVM** (Model-View-ViewModel) a využívá **Room** pro lokální persistenci a **Firebase Firestore** pro sdílený online leaderboard.
+Tento dokument slouží jako kompletní průvodce implementací Android aplikace v Kotlinu. Architektura sleduje vzor **MVVM** (Model-View-ViewModel) a využívá **Room** pro lokální persistenci a **Firebase Firestore** pro sdílený online leaderboard.
 
 ## Obsah
 1.  [Nastavení prostředí a Gradle](#1-nastavení-prostředí-a-gradle)
@@ -20,7 +20,7 @@ Než začneme psát kód, musíme připravit build systém. Aplikace vyžaduje z
 
 ### 1.1 Project-level `build.gradle.kts`
 Definujeme verze pluginů pro celý projekt.
-* **KSP (Kotlin Symbol Processing):** Nahrazuje starší KAPT. Je nutný pro generování kódu Room databáze. Verze KSP musí striktně odpovídat verzi Kotlinu.
+* **KSP (Kotlin Symbol Processing):**. Je nutný pro generování kódu Room databáze. Verze KSP musí striktně odpovídat verzi Kotlinu.
 * **Google Services:** Nutné pro komunikaci s Firebase.
 
 ```kotlin
@@ -143,7 +143,7 @@ data class ElementEntity(
 **Soubor:** `data/GameDao.kt`
 Rozhraní definující SQL dotazy. Room automaticky vygeneruje implementaci tohoto rozhraní.
 * `Flow<List<...>>`: Reaktivní stream. Jakmile se data v DB změní, UI se automaticky aktualizuje.
-* `suspend`: Funkce se vykonávají v coroutine (na pozadí), neblokují hlavní vlákno.
+* `suspend`: Funkce se vykonávají v na pozadí.
 
 ```kotlin
 package com.example.semestralka.data
@@ -207,7 +207,7 @@ abstract class GameDatabase : RoomDatabase() {
 Slouží pouze pro ukládání a načítání výsledků.
 
 **Soubor:** `data/ScoreEntry.kt`
-Jednoduchá datová třída (POJO), kterou Firestore umí automaticky serializovat do JSON dokumentu.
+Jednoduchá datová třída, kterou Firestore umí automaticky serializovat do JSON dokumentu.
 * `dateId`: Slouží k filtrování žebříčků podle dne (např. "2025-01-12").
 
 ```kotlin
@@ -284,7 +284,7 @@ class GameRepository(
 
 ## 5. Core a Dependency Injection
 
-Jednoduchá implementace Service Locator patternu. Místo složitých knihoven (Hilt/Koin) si vytvoříme závislosti ručně v třídě `Application`.
+Jednoduchá implementace Service Locator patternu. Místo složitých knihoven si vytvoříme závislosti ručně v třídě `Application`.
 
 **Soubor:** `core/GameApplication.kt`
 Tato třída žije po celou dobu běhu aplikace.
@@ -352,7 +352,7 @@ fun startDailyChallenge(list: List<ElementEntity> = _state.value.allElements) {
 ```
 
 ### 6.3 Algoritmus kontroly výhry (BFS)
-Musíme zjistit, zda existuje cesta od `Start` k `Target` pouze přes `revealed` (odhalené) prvky. Používáme **Breadth-First Search (Prohledávání do šířky)**.
+Musíme zjistit, zda existuje cesta od `Start` k `Target` pouze přes `revealed` (odhalené) prvky. Používáme **Breadth-First Search**.
 
 ```kotlin
 private fun checkWinInternal(start: ElementEntity?, target: ElementEntity?, revealed: Set<ElementEntity>): Boolean {
@@ -457,7 +457,7 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 
-### 8.2 Kritický krok: Firebase Konfigurace
+### 8.2 Firebase Konfigurace
 1.  Stáhněte `google-services.json` z Firebase Console.
 2.  Vložte jej do složky `app/` v projektu.
 3.  Spusťte aplikaci.
