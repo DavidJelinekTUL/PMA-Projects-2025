@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "485535983615",
+    "project_id": "elementalpath-semestralka",
+    "storage_bucket": "elementalpath-semestralka.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:485535983615:android:54c86d1fa77c1b4bc3e9ca",
+        "android_client_info": {
+          "package_name": "com.example.semestralka"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5FwEgHwOHtOF-nSgZArcQLHhZ6WW5HQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
