@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView android:id="@+id/tvDetailName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="24sp" android:textStyle="bold" />
+    <TextView android:id="@+id/tvDetailScore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16dp" />
+
+    <TextView android:id="@+id/tvDetailWishlist" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Přání:" />
+    <TextView android:id="@+id/tvDetailSins" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hříchy:" android:textColor="#AA0000" />
+    <TextView android:id="@+id/tvDetailVirtues" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dobra:" android:textColor="#00AA00" />
+
+    <Space android:layout_width="match_parent" android:layout_height="32dp" />
+
+    <Button android:id="@+id/btnApprove" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="SCHVÁLIT DÁRKY" />
+    <Button android:id="@+id/btnCoal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="POSLAT UHLÍ" android:backgroundTint="#333333" />
+
+</LinearLayout>
